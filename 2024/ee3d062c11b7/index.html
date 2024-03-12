@@ -13,8 +13,8 @@
   
   <title>
     
-      Tag 
-       : 商业
+      《故事》 
+      
       
       |
     
@@ -112,66 +112,153 @@
 
 
       <div class="flex-container">
-        <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<div class="container tag-details">
-  <div class="content-title">
-    <h2>
-      <span>商业</span>
-    </h2>
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">《故事》</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-03-12 18:32:14
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E8%AE%A4%E7%9F%A5/" title="认知">
+                    #认知
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Books/" title="Books">
+                    <b>#</b> Books
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <h1 id="读后感"><a href="#读后感" class="headerlink" title="读后感"></a>读后感</h1><p><img src="/./img/t6_568797.jpg"></p>
+<p>我只能说，超级难看，，，，</p>
+<p>我看了差不多56%的样子，实在看不出一个什么东西来</p>
+<p>书中有很多术语，很多术语揉在一起，然后就难以理解，所以我还是水平太低了，看不懂一点</p>
+<h1 id="书摘"><a href="#书摘" class="headerlink" title="书摘"></a>书摘</h1><p>​    设计情节是指在故事的危险地形上航行，当面临无数岔道时选择正确的航道。情节就是作者对事件的选择以及对其在时间中的设计。</p>
+<p>同样的问题，该包括什么？删减什么？什么在前？什么置后？必须对事件进行选择；作者的选择有好有坏，其结果便是情节。</p>
+<p>​    人性从根本上而言都是保守的，实际上这是大自然的规律。任何有机体都只会去消耗必要的能量，绝不会冒不必要的风险或采取不必要的行动。</p>
+<p>它为什么要？如果一个任务可以用容易的方法来完成，不会冒损失或痛苦的风险，也不必消耗能量，试问任何生物为什么要去采用更困难更危险或更耗</p>
+<p>费精力的方法？自然天性不会允许它那样做……而人类的天性也只不过是宇宙天性的一个方面而已</p>
+
+      </div>
+      
+    </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
   </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《纳瓦尔宝典》">
-        <span class="time-m-d">2024-03-08</span>
-        <a href="/2024/960cb089d490/">
-          <span>《纳瓦尔宝典》</span>
-        </a>
-      </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%BB%E5%90%8E%E6%84%9F"><span class="toc-text">读后感</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B9%A6%E6%91%98"><span class="toc-text">书摘</span></a></li></ol>
+      
     </div>
+  </div>
+
   
-    <div class="post-list">
-      <div class="post-item" title="《父爸爸穷爸爸》">
-        <span class="time-m-d">2024-03-06</span>
-        <a href="/2024/80d2099506da/">
-          <span>《父爸爸穷爸爸》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《圈子全套x3册》">
-        <span class="time-m-d">2024-03-01</span>
-        <a href="/2024/680d155dd176/">
-          <span>《圈子全套x3册》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《商战》">
-        <span class="time-m-d">2024-02-25</span>
-        <a href="/2024/b9643784335c/">
-          <span>《商战》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《定位：争夺用户心智的战争》">
-        <span class="time-m-d">2024-02-23</span>
-        <a href="/2024/3fe24031d2e6/">
-          <span>《定位：争夺用户心智的战争》</span>
-        </a>
-      </div>
-    </div>
-  
-  <nav class="post-navigation">
+<script src="/js/catalog.js"></script>
+
+
+
+
     
-    <span class="page-num">1 / 1</span>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'g9ISE4awJHUvDsP8q7mLcpSd-gzGzoHsz',
+        appKey: '80Myej5b5XYWc7zli9YAY7by',
+        placeholder: 'Welcome!',
+        avatar: 'redqx',
+        lang: 'en'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
     
-  </nav>
-</div>
+  </div>
+
 
         
 <div class="footer">
@@ -436,6 +523,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E3%80%8A%E6%95%85%E4%BA%8B%E3%80%8B + '&url=' + http%3A%2F%2Fexample.com%2F2024%2Fee3d062c11b7%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2024/ee3d062c11b7/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>

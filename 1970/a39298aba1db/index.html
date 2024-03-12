@@ -13,8 +13,8 @@
   
   <title>
     
-      Tag 
-       : 商业
+      中国象棋 
+      
       
       |
     
@@ -112,66 +112,136 @@
 
 
       <div class="flex-container">
-        <!-- 标签详情页，展示某个标签下的文章列表，url形式：https://yoursite/tags/某个标签/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<div class="container tag-details">
-  <div class="content-title">
-    <h2>
-      <span>商业</span>
-    </h2>
+
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">中国象棋</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-03-06 20:50:02
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E8%B1%A1%E6%A3%8B/" title="象棋">
+                    #象棋
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/%E5%85%B4%E8%B6%A3%E7%88%B1%E5%A5%BD/" title="兴趣爱好">
+                    <b>#</b> 兴趣爱好
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <blockquote>
+<p>开局的口诀： 先出大子，快活马腿，找好位置，想法吃子</p>
+</blockquote>
+<p>那么什么是先出大子？</p>
+<p>就是先出厉害的棋子，其中以  炮，马，军 为例</p>
+<p>一般采用 炮，马，军 先后出。</p>
+<p>ps：如果先出车，那比死翘翘的。因为马没了保护的。所以初期顺序也不是 车，炮，马，</p>
+<p>那么什么是快活马腿？</p>
+<p>就是让马尽量在棋盘的中间行动，同时尽量的让马少蹩脚。</p>
+
+      </div>
+      
+    </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'g9ISE4awJHUvDsP8q7mLcpSd-gzGzoHsz',
+        appKey: '80Myej5b5XYWc7zli9YAY7by',
+        placeholder: 'Welcome!',
+        avatar: 'redqx',
+        lang: 'en'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
+      </div>
+    
   </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《纳瓦尔宝典》">
-        <span class="time-m-d">2024-03-08</span>
-        <a href="/2024/960cb089d490/">
-          <span>《纳瓦尔宝典》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《父爸爸穷爸爸》">
-        <span class="time-m-d">2024-03-06</span>
-        <a href="/2024/80d2099506da/">
-          <span>《父爸爸穷爸爸》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《圈子全套x3册》">
-        <span class="time-m-d">2024-03-01</span>
-        <a href="/2024/680d155dd176/">
-          <span>《圈子全套x3册》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《商战》">
-        <span class="time-m-d">2024-02-25</span>
-        <a href="/2024/b9643784335c/">
-          <span>《商战》</span>
-        </a>
-      </div>
-    </div>
-  
-    <div class="post-list">
-      <div class="post-item" title="《定位：争夺用户心智的战争》">
-        <span class="time-m-d">2024-02-23</span>
-        <a href="/2024/3fe24031d2e6/">
-          <span>《定位：争夺用户心智的战争》</span>
-        </a>
-      </div>
-    </div>
-  
-  <nav class="post-navigation">
-    
-    <span class="page-num">1 / 1</span>
-    
-  </nav>
-</div>
+
 
         
 <div class="footer">
@@ -436,6 +506,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E4%B8%AD%E5%9B%BD%E8%B1%A1%E6%A3%8B + '&url=' + http%3A%2F%2Fexample.com%2F1970%2Fa39298aba1db%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/1970/a39298aba1db/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
