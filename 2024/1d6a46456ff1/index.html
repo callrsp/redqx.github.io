@@ -13,7 +13,7 @@
   
   <title>
     
-      archive_a: 1970 
+      《投资学》 
       
       
       |
@@ -112,336 +112,128 @@
 
 
       <div class="flex-container">
-        <!-- 归档页，展示本站所有文章，按照年份降序归类，url形式：https://yoursite/archives/ -->
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
-<!-- last: 按年份把文章分组，当前遍历到的年份 -->
-<!-- now: 当前遍历到的文章的发布年份 -->
 
-<div class="container archives">
-  <div class="post-list">
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>2024</span>
-          </h2>
-        </div>
+  <!-- LaTex Display -->
+
+  
+    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
+  
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    }
+  </script>
+
+
+
+
+
+  <!-- clipboard -->
+
+  
+    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
+  
+  
+<script src="/js/codeCopy.js"></script>
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">《投资学》</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime mr-10" title="Update time"></i>
+          2024-04-06 16:57:15
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags mr-10" title="Tags"></i>
+                
+                <span class="span--tag mr-8">
+                  <a href="/tags/%E5%95%86%E4%B8%9A/" title="商业">
+                    #商业
+                  </a>
+                </span>
+                
+              </span>
+          
+              <span class="post-categories">
+                <i class="iconfont icon-bookmark" title="Categories"></i>
+                
+                <span class="span--category">
+                  <a href="/categories/Books/" title="Books">
+                    <b>#</b> Books
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>著名的投资人，查理·芒格，巴菲特</p>
+
+      </div>
       
-      <div class="post-item" title="谈读书">
-        <div class="time-m-d">04-06</div>
-        <div class="title">
-          <a href="/2024/2a52b0bea9fc/">
-            <span>谈读书</span>
-          </a>
-        </div>
-      </div>
+    </div>
     
-      <div class="post-item" title="《投资学》">
-        <div class="time-m-d">04-06</div>
-        <div class="title">
-          <a href="/2024/1d6a46456ff1/">
-            <span>《投资学》</span>
-          </a>
-        </div>
-      </div>
+
     
-      <div class="post-item" title="《《资本论》的读法》">
-        <div class="time-m-d">04-05</div>
-        <div class="title">
-          <a href="/2024/a86e9dfe28f2/">
-            <span>《《资本论》的读法》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《电影清单》">
-        <div class="time-m-d">04-01</div>
-        <div class="title">
-          <a href="/2024/ddb5e2ac8cf5/">
-            <span>《电影清单》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《电视剧清单》">
-        <div class="time-m-d">04-01</div>
-        <div class="title">
-          <a href="/2024/d9948e51ffdf/">
-            <span>《电视剧清单》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《影响力》">
-        <div class="time-m-d">03-31</div>
-        <div class="title">
-          <a href="/2024/c6dd4016fd54/">
-            <span>《影响力》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="成事的总纲是什么">
-        <div class="time-m-d">03-30</div>
-        <div class="title">
-          <a href="/2024/17549935b99e/">
-            <span>成事的总纲是什么</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《苏轼传》">
-        <div class="time-m-d">03-30</div>
-        <div class="title">
-          <a href="/2024/1d6554b4d73c/">
-            <span>《苏轼传》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《商业至简：60天在早餐桌子旁读完商学院》">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2024/b6d3cd591f96/">
-            <span>《商业至简：60天在早餐桌子旁读完商学院》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《明朝那些事儿》">
-        <div class="time-m-d">03-29</div>
-        <div class="title">
-          <a href="/2024/f3592e495ec7/">
-            <span>《明朝那些事儿》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《认知觉醒：开启自我改变的原动力》">
-        <div class="time-m-d">03-27</div>
-        <div class="title">
-          <a href="/2024/d79ffa093a42/">
-            <span>《认知觉醒：开启自我改变的原动力》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《房地产营销30讲》">
-        <div class="time-m-d">03-26</div>
-        <div class="title">
-          <a href="/2024/49a1ed4b325c/">
-            <span>《房地产营销30讲》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《黑冰》">
-        <div class="time-m-d">03-20</div>
-        <div class="title">
-          <a href="/2024/96db1a3e574e/">
-            <span>《黑冰》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《思考，快与慢》">
-        <div class="time-m-d">03-20</div>
-        <div class="title">
-          <a href="/2024/33b720c53193/">
-            <span>《思考，快与慢》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《思考致富》">
-        <div class="time-m-d">03-19</div>
-        <div class="title">
-          <a href="/2024/04a865269ee8/">
-            <span>《思考致富》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《销售中的心理学》">
-        <div class="time-m-d">03-16</div>
-        <div class="title">
-          <a href="/2024/2ba45d1398c9/">
-            <span>《销售中的心理学》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《道德经说什么》">
-        <div class="time-m-d">03-15</div>
-        <div class="title">
-          <a href="/2024/1176f28250a3/">
-            <span>《道德经说什么》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《围城》">
-        <div class="time-m-d">03-13</div>
-        <div class="title">
-          <a href="/2024/af862e4a67a6/">
-            <span>《围城》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《销售洗脑：把逛街者变为购买者的8条黄金法则》">
-        <div class="time-m-d">03-13</div>
-        <div class="title">
-          <a href="/2024/88836a3d4986/">
-            <span>《销售洗脑：把逛街者变为购买者的8条黄金法则》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《漫画销售话术：轻松搞定客户的说话技巧》">
-        <div class="time-m-d">03-13</div>
-        <div class="title">
-          <a href="/2024/30210b692cac/">
-            <span>《漫画销售话术：轻松搞定客户的说话技巧》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《论销售》">
-        <div class="time-m-d">03-13</div>
-        <div class="title">
-          <a href="/2024/5de085bb4596/">
-            <span>《论销售》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《人性的弱点》">
-        <div class="time-m-d">03-12</div>
-        <div class="title">
-          <a href="/2024/31524a89af79/">
-            <span>《人性的弱点》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="日常收集的诗句">
-        <div class="time-m-d">03-12</div>
-        <div class="title">
-          <a href="/2024/2d8cf4880bbe/">
-            <span>日常收集的诗句</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《好好说话2》">
-        <div class="time-m-d">03-11</div>
-        <div class="title">
-          <a href="/2024/d81454e62577/">
-            <span>《好好说话2》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《反脆弱：从不确定性中获益》">
-        <div class="time-m-d">03-09</div>
-        <div class="title">
-          <a href="/2024/58ed75b38532/">
-            <span>《反脆弱：从不确定性中获益》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《纳瓦尔宝典》">
-        <div class="time-m-d">03-08</div>
-        <div class="title">
-          <a href="/2024/8d953fb94419/">
-            <span>《纳瓦尔宝典》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《父爸爸穷爸爸》">
-        <div class="time-m-d">03-06</div>
-        <div class="title">
-          <a href="/2024/286572f17ed5/">
-            <span>《父爸爸穷爸爸》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《圈子全套x3册》">
-        <div class="time-m-d">03-01</div>
-        <div class="title">
-          <a href="/2024/334f6c0fed44/">
-            <span>《圈子全套x3册》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《岂不环归》">
-        <div class="time-m-d">02-29</div>
-        <div class="title">
-          <a href="/2024/7e30effa2f5b/">
-            <span>《岂不环归》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《一千零一夜》">
-        <div class="time-m-d">02-27</div>
-        <div class="title">
-          <a href="/2024/af5e168bd52a/">
-            <span>《一千零一夜》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《故事》">
-        <div class="time-m-d">02-26</div>
-        <div class="title">
-          <a href="/2024/ee3d062c11b7/">
-            <span>《故事》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《商战》">
-        <div class="time-m-d">02-25</div>
-        <div class="title">
-          <a href="/2024/9eb545df7f29/">
-            <span>《商战》</span>
-          </a>
-        </div>
-      </div>
-    
-      <div class="post-item" title="《定位：争夺用户心智的战争》">
-        <div class="time-m-d">02-23</div>
-        <div class="title">
-          <a href="/2024/d78cdbe66715/">
-            <span>《定位：争夺用户心智的战争》</span>
-          </a>
-        </div>
-      </div>
-    
-        <!-- 后续文章的发布年份呈现 -->
-        <div class="content-title">
-          <h2>
-            <span>1970</span>
-          </h2>
-        </div>
-      
-      <div class="post-item" title="Hello World">
-        <div class="time-m-d">01-01</div>
-        <div class="title">
-          <a href="/1970/a01243bec9a1/">
-            <span>Hello World</span>
-          </a>
-        </div>
+      <div class="comments-container">
+        
+
+
+
+
+  
+    <script async type="text/javascript" src="/plugins/valine.min.js" onload="loadValineSuc(this)"></script>
+  
+
+  <div id="vcomments"></div>
+
+  <script>
+    function loadValineSuc() {
+      new Valine({
+        el: '#vcomments',
+        appId: 'g9ISE4awJHUvDsP8q7mLcpSd-gzGzoHsz',
+        appKey: '80Myej5b5XYWc7zli9YAY7by',
+        placeholder: 'Welcome!',
+        avatar: 'redqx',
+        lang: 'en'
+      })
+    }
+  </script>
+
+    <style>
+      .comments-container .v .vempty {
+        display: none!important;
+      }
+    </style>
+
+
+
+
       </div>
     
   </div>
-</div>
+
 
         
 <div class="footer">
@@ -706,6 +498,24 @@
 
 
         
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + %E3%80%8A%E6%8A%95%E8%B5%84%E5%AD%A6%E3%80%8B + '&url=' + http%3A%2F%2Fexample.com%2F2024%2F1d6a46456ff1%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2024/1d6a46456ff1/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
   
   
 <script src="/js/shares.js"></script>
