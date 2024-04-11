@@ -10,13 +10,10 @@
   <!-- 用于搜索引擎的文章摘要 -->
   
   
+    <meta name="robots" content="noindex" />
+  
   
   <title>
-    
-      About 
-      
-      
-      |
     
      redqx`blog
   </title>
@@ -112,79 +109,58 @@
 
 
       <div class="flex-container">
-        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
-<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
-
-
-  <!-- LaTex Display -->
-
-  
-    <script async type="text/javascript" src="/plugins/mathjax/tex-chtml.js"></script>
-  
-  <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      }
-    }
-  </script>
-
-
-
-
-
-  <!-- clipboard -->
-
-  
-    <script async type="text/javascript" src="/plugins/clipboard.min.js"></script>
-  
-  
-<script src="/js/codeCopy.js"></script>
-
-
-
-
-
-
-
-  
-
-  
-
-  
-  <!-- 关于页 url形式：https://yoursite/about/ -->
-    <div class="container about-index">
-      <div class="markdown-body">
-        <p>你好,你是第<img src="https://profile-counter.glitch.me/redqx/count.svg" alt="Visitor Count">访客。欢迎来到此地。</p>
-<h1 id="Github-更新情况"><a href="#Github-更新情况" class="headerlink" title="Github 更新情况"></a>Github 更新情况</h1><p><img src="https://raw.githubusercontent.com/redqx/redqx/output/github-contribution-grid-snake-dark.svg" alt="HuiDBK&#39;s github activity graph"></p>
-<p><img src="https://github-readme-activity-graph.vercel.app/graph?username=redqx&theme=dracula" alt="Ashutosh&#39;s github activity graph"></p>
-<h1 id="个人档案"><a href="#个人档案" class="headerlink" title="个人档案"></a>个人档案</h1><p>姓名：邓渠香</p>
-<p>别名（外号）：阿香，香香，香哥，香蛋，臭蛋，邓渠臭</p>
-<p>性别：男</p>
-<p>民族：汉</p>
-<p>血型：？</p>
-<p>学历：本科生，鄙人不才只上了个一本。</p>
-<p>职业：极品混混</p>
-<p>家庭出身：贫农（至少三代）</p>
-<p>生卒：2001.09 ~ 2xxx.x</p>
-<p>最喜欢的颜色：黄色（这个好像没得选）</p>
-<p>社会关系：</p>
-<p>父亲   邓某   农民 （小学未毕业）</p>
-<p>母亲　李某　农民 （小学未毕业）</p>
-<p>座右铭：（没想好，非得有座右铭吗？）</p>
-<p>主要经历：</p>
-<p>2001~200x：我出生了，来人间走一遭，生下来，父母把我留在了老家，被大爸背着去打牌，被幺爷爷背着在田坎上干活，于是过着被很多人带着的生活。</p>
-<p>2006~2009：在深圳这所大城市度过了难忘的时光，上过学，偷过东西，捡过破烂，经常被打被骂。</p>
-<p>2009~2015：回农村读小学，不幸，留了2级，从一年级开始读</p>
-<p>2015~2018： 在”达外”读了3年初中，曾拿过年级第8名 </p>
-<p>2018~2021： 又在老地方读了3年高中，不过3年过得不怎么样</p>
-<p>2021~2025： 在cuit驾校躺了4年</p>
-
+        <div class="container index">
+  <div class="post-list">
+    <!-- 遍历渲染文章 -->
+    
+      <div class="post-item" title="《商战》">
+        <div class="time-m-d">2024-02-25</div>
+        <div class="title">
+          <a href="/2024/9eb545df7f29/">
+            
+              
+                <span>《商战》</span>
+              
+            
+          </a>
+        </div>
       </div>
-    </div>
-  
-
-  
+    
+      <div class="post-item" title="《定位：争夺用户心智的战争》">
+        <div class="time-m-d">2024-02-23</div>
+        <div class="title">
+          <a href="/2024/d78cdbe66715/">
+            
+              
+                <span>《定位：争夺用户心智的战争》</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+      <div class="post-item" title="Hello World">
+        <div class="time-m-d">1970-01-01</div>
+        <div class="title">
+          <a href="/1970/a01243bec9a1/">
+            
+              
+                <span>Hello World</span>
+              
+            
+          </a>
+        </div>
+      </div>
+    
+  </div>
+  <nav class="post-navigation">
+    
+      <a href="/page/4/"><i class="iconfont icon-angleleft"></i></a>
+    
+    <span class="page-num">5 / 5</span>
+    
+  </nav>
+</div>
 
         
 <div class="footer">
@@ -438,24 +414,6 @@
 
 
         
-  
-    <div class="share-icon tools-bar-item">
-      <a href="javascript: void(0)" id="share-icon">
-        <i class="iconfont iconshare"></i>
-      </a>
-      <div class="share-content hidden">
-        
-          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + about + '&url=' + http%3A%2F%2Fexample.com%2Fabout%2Findex.html + '" target="_blank" title="Twitter">
-            <i class="iconfont icon-twitter"></i>
-          </a>
-        
-        
-          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/about/index.html" target="_blank" title="Facebook">
-            <i class="iconfont icon-facebooksquare"></i>
-          </a>
-        
-      </div>
-    </div>
   
   
 <script src="/js/shares.js"></script>
