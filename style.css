@@ -10,7 +10,7 @@
   font-family: "霞鹜臻楷", Consolas,"Microsoft YaHei", sans-serif;
 }
 body {
-    background-image: url('./res/bg.jpg');
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -32,7 +32,7 @@ body {
 
 .content h1 {
   font-size: 160px;
-  color: #FF7F50;
+  color: #fff;
   font-weight: 600;
   transition: 0.5s;
 }
@@ -45,7 +45,7 @@ body {
 .content a {
   text-decoration: none;
   display: inline-block;
-  color: #FF7F50;
+  color: #fff;
   font-size: 24px;
   border: 2px solid white;
   padding: 14px 50px;
@@ -54,7 +54,7 @@ body {
 }
 
 .content a:hover {
-  background: #FF7F50;
+  background: #fff;
   color: #000;
 }
 
