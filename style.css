@@ -32,7 +32,7 @@ body {
 
 .content h1 {
   font-size: 160px;
-  color: #fff;
+  color: #FF7F50;
   font-weight: 600;
   transition: 0.5s;
 }
@@ -45,7 +45,7 @@ body {
 .content a {
   text-decoration: none;
   display: inline-block;
-  color: #fff;
+  color: #FF7F50;
   font-size: 24px;
   border: 2px solid white;
   padding: 14px 50px;
@@ -54,7 +54,7 @@ body {
 }
 
 .content a:hover {
-  background: #fff;
+  background: #FF7F50;
   color: #000;
 }
 
