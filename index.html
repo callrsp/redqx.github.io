@@ -1,72 +1,22 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>按钮跳转页面</title>
-    <style>
-        @font-face {
-            font-family: "霞鹜臻楷";
-            src: url("./fonts/霞鹜臻楷.ttf") format("truetype");
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            margin: 0;
-            font-weight: bold; /* 加粗 */
-            font-family: "霞鹜臻楷", Consolas,"Microsoft YaHei", sans-serif;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; background-blend-mode: multiply,multiply;
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Background Video</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <video autoplay loop muted plays-inline class="back-video">
+        <!-- change the video to your own -->
+        <source src="assets/video.mp4" />
+      </video>
 
-        .header {
-            width: 100%;
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 10px; /* 圆角 */
-        }
-
-        button {
-            font-weight: bold; /* 加粗 */
-            font-family: "霞鹜臻楷", Consolas,"Microsoft YaHei", sans-serif;
-            width: 30%;
-            margin: 10px;
-            padding: 10px 20px; /* 按钮内边距 */
-            border: none;
-            background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            border-radius: 20px; /* 圆角 */
-            cursor: pointer;
-            transition: background-color 0.3s ease; /* 过渡效果 */
-        }
-
-        button:hover {
-            background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%); 
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>杏仁小破站：测试中</h1>
-    </div>
-    <button onclick="goToPage1()">杏仁bbs： 发帖，交友，买卖</button>
-    <button onclick="goToPage2()">按钮2</button>
-    <button onclick="goToPage3()">按钮3</button>
-
-    <script>
-        function goToPage1() {
-            window.location.href = "#";
-        }
-
-        function goToPage2() {
-            window.location.href = "#";
-        }
-
-        function goToPage3() {
-            window.location.href = "#";
-        }
-    </script>
-</body>
+      <section class="content">
+        <h1>杏仁小破站</h1>
+        <a href="http://47.120.8.213/bbs">Explore：在这里，发现一个新的世界</a>
+      </section>
+    </section>
+  </body>
 </html>
