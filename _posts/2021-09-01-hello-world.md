@@ -16,6 +16,16 @@ categories: [others]
 
 
 
+test img show
+
+![avatar-13](./img/image-20240725-touxiang.jpg)
+
+![avatar-13](https://github.com/redqx/redqx.github.io/tree/master/_posts/img/image-20240725-touxiang.jpg)
+
+![avatar-13](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725-touxiang.jpg)
+
+![avatar-13](https://redqx.github.io/_posts/img/image-20240725-touxiang.jpg)
+
 # ssh上传
 
 为什么不用https,这个老是出现问题.
