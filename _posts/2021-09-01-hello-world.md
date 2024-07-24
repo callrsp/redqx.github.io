@@ -60,20 +60,22 @@ git push -u origin master
 
 2), 页脚的GitHub
 
+```
           <div class="btn-github" style="float:right;">
             <iframe src="https://ghbtns.com/github-btn.html?user=enovella&repo=enovella.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
             <iframe src="https://ghbtns.com/github-btn.html?user=enovella&repo=enovella.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-          </div>
-
-
-​          
-​     ===>改为   
-​              <div class="btn-github" style="float:right;">
+     
+     ===>改为   
+​             <div class="btn-github" style="float:right;">
 ​                <iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
 ​                <iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
 ​              </div>
+```
 
- 
+
+
+
+
 
 
 # toc
