@@ -107,7 +107,7 @@ int main()
 
 这就导致子进程运行的时候,会碰到int3异常,然后异常抛给了父进程, 这里可能是我们的突破点
 
-![image-20240724235546295](./../static/img/_posts/image-20240724235546295.png)
+![image-20240724235546295](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724235546295.png)
 
 **3), 发现三**
 
@@ -123,7 +123,7 @@ r10和r11也发生了变化
 
 
 
-![image-20240724232432414](./../static/img/_posts/image-20240724232432414.png)
+![image-20240724232432414](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724232432414.png)
 
 # (思路一): jmp self
 
@@ -131,7 +131,7 @@ r10和r11也发生了变化
 
 
 
-![image-20240725000553220](./../static/img/_posts/image-20240725000553220.png)
+![image-20240725000553220](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725000553220.png)
 
 
 
@@ -145,11 +145,11 @@ r10和r11也发生了变化
 
 修改`8B 45` => `EB FE`
 
-![image-20240725000949398](./../static/img/_posts/image-20240725000949398.png)
+![image-20240725000949398](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725000949398.png)
 
 然后我们就直接在父进程F8
 
-![image-20240725001040591](./../static/img/_posts/image-20240725001040591.png)
+![image-20240725001040591](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001040591.png)
 
 然后启动另外一个IDA附加我们的子进程
 
@@ -165,33 +165,33 @@ IDA Linux 64-bit remote debug server(ST) v7.7.27. Hex-Rays (c) 2004-2022
 
 然后IDA附加子进程
 
-![image-20240725001202548](./../static/img/_posts/image-20240725001202548.png)
+![image-20240725001202548](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001202548.png)
 
 注意端口
 
-![image-20240725001221351](./../static/img/_posts/image-20240725001221351.png)
+![image-20240725001221351](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001221351.png)
 
 父进程的PID是11127,
 
-![image-20240725001251217](./../static/img/_posts/image-20240725001251217.png)
+![image-20240725001251217](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001251217.png)
 
 选择子进程,
 
-![image-20240725001409889](./../static/img/_posts/image-20240725001409889.png)
+![image-20240725001409889](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001409889.png)
 
 进入子进程后,直接F9
 
-![image-20240725001443654](./../static/img/_posts/image-20240725001443654.png)
+![image-20240725001443654](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001443654.png)
 
 在父进程中,死循环位于0x000055619C6C01A2
 
-![image-20240725001513781](./../static/img/_posts/image-20240725001513781.png)
+![image-20240725001513781](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001513781.png)
 
 在子进程中,相同的位置,我们去往,并下一个断点
 
 ps: 子进程和父进程的内存分布是一样的
 
-![image-20240725001607641](./../static/img/_posts/image-20240725001607641.png)
+![image-20240725001607641](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725001607641.png)
 
 下了断点后,死循环就立刻停下来了
 
@@ -223,15 +223,15 @@ sleep函数在libc.so中本来就存在, 所以我们可以直接去调用.
 
 
 
-![image-20240724224042289](./../static/img/_posts/image-20240724224042289.png)
+![image-20240724224042289](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724224042289.png)
 
 在libc.so中找到sleep
 
-![image-20240724212132882](./../static/img/_posts/image-20240724212011422.png)
+![image-20240724212132882](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724212011422.png)
 
 找到位置是 0x7F2EC86B7050
 
-![image-20240724224058363](./../static/img/_posts/image-20240724224058363.png)
+![image-20240724224058363](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724224058363.png)
 
 这一次我们写入的6个字节码,同时还需要修改一下栈[rsp]的数据, 
 
@@ -255,11 +255,11 @@ call    qword ptr [rsp]
 
 栈视图
 
-![image-20240725003227657](./../static/img/_posts/image-20240725003227657.png)
+![image-20240725003227657](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725003227657.png)
 
 汇编视图
 
-![image-20240725003518796](./../static/img/_posts/image-20240725003518796.png)
+![image-20240725003518796](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725003518796.png)
 
 
 
@@ -273,7 +273,7 @@ call    qword ptr [rsp]
 
 所以我们的操作得在60s之内完成,我测试了一下自己差不多可以在40秒完成
 
-![image-20240724235259801](./../static/img/_posts/image-20240724235259801.png)
+![image-20240724235259801](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724235259801.png)
 
 # (思路三): int3异常
 
@@ -283,7 +283,7 @@ call    qword ptr [rsp]
 
 那么我在子进程第一句代码处下一个断点
 
-![image-20240725004938138](./../static/img/_posts/image-20240725004938138.png)
+![image-20240725004938138](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725004938138.png)
 
 在父进程运行了F8了fork()之后
 
@@ -295,17 +295,17 @@ call    qword ptr [rsp]
 
 
 
-![image-20240725004956865](./../static/img/_posts/image-20240725004956865.png)
+![image-20240725004956865](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725004956865.png)
 
 此刻子进程处于暂停状态
 
 但是我现在还无法做到让IDA附加子进程, 会提示报错,不让附加
 
-![image-20240725005849936](./../static/img/_posts/image-20240725005849936.png)
+![image-20240725005849936](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725005849936.png)
 
 父进程后续运行会, IDA一直会提醒父进程处理异常
 
-![image-20240725005948798](./../static/img/_posts/image-20240725005948798.png)
+![image-20240725005948798](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725005948798.png)
 
 子进程无法处理int3异常,没有异常处理函数
 
