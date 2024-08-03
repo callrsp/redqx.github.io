@@ -3,7 +3,6 @@ layout: post
 title:  "如何用IDA调试fork后的子进程"
 date:   2024-07-24 19:39:02 +0800
 categories: [Linux] 
-
 ---
 
 
@@ -124,6 +123,8 @@ r10和r11也发生了变化
 
 
 ![image-20240724232432414](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240724232432414.png)
+
+
 
 # (思路一): jmp self
 

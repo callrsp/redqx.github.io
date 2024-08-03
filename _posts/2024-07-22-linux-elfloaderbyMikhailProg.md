@@ -7,18 +7,6 @@ categories: [Linux]
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 # project
 
 
