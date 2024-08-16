@@ -24,10 +24,6 @@ https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/
 
 
 
-
-
-
-
 test img show
 
 ![avatar-13](./img/image-20240725-touxiang.jpg)

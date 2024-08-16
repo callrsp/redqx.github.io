@@ -21,6 +21,8 @@ gen1_v2
 
 
 
+
+
 >  app(com.example.pack)
 
 原始的待加壳项目, 主要功能是activity显示一个图片, 布局中有个按钮
@@ -111,6 +113,44 @@ public class MyApplication extends Application {
 
 
 ##  一代壳学习: 动态加载dex
+
+
+
+这种壳的大概原理一般长这样
+
+![image-20240804140456228](https://raw.githubusercontent.com/redqx/pack/master/img/image-20240804140456228.png)
+
+对org_apk解包, 拿出其中的org_dex
+
+把org_dex,dex_loader,原org_dex长度(4字节) 整合为一个新的dex
+
+然后把新的dex 替换掉原org_apk的org_dex
+
+对org_apk再签名即可
+
+
+
+感觉解包,整合,签名太麻烦,于是我换了一种形式,主要目的是学习动态加载dex
+
+![image-20240804140956617](https://raw.githubusercontent.com/redqx/pack/master/img/image-20240804140956617.png)
+
+值得注意的是org_apk项目1和org_apk项目2是同一个项目的不同内容
+
+大概步骤写一org_apk的项目, 功能及代码和com.example.pack项目差不多.
+
+然后生成apk文件,提取其中的dex文件, 有很多dex, 只提取我们写的逻辑对应的dex, 也就是MainActivity的classes.dex
+
+然后把classes.dex存放到项目资源的asset目录中,
+
+然后删除所有java源代码文件,, 添加ProxyApplication.java, 并实现ProxyApplication的内容
+
+在org_apk中的AndroidManifest.xml中添加 `android:name=".ProxyApplication"`
+
+然后编译生成项目.
+
+壳在运行时会读取自身asset目录下的classes.dex,以及读取自身的资源文件, 完成dex和资源的加载.
+
+
 
 
 
@@ -317,3 +357,21 @@ public class MainActivity extends Activity
 然后再去加载,就发现出现了一个莫名其妙的activity布局,(还包含一个按钮,不知道哪里来的activity)
 
 ![image-20240803163322917](https://raw.githubusercontent.com/redqx/pack/master/img/image-20240803163322917.png)
+
+
+
+### 不落地加载
+
+https://github.com/gal2xy/Android-Second-Generation-Reinforced-Shell
+
+
+
+
+
+##  二代壳学习: 函数抽取壳
+
+
+
+分析文章: https://www.52pojie.cn/thread-1576245-1-1.html
+
+项目地址：https://github.com/luoyesiqiu/dpt-shell
