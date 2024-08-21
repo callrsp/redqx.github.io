@@ -500,3 +500,101 @@ i的获取直接在chains[]中拿, 拿不到就g掉
 
 
 
+# 后续
+
+
+
+在 GNU_HASH table 中,我粗略的认为 buckets中, 最大的bucket值可以作为 dynsym_table的符号个数
+
+在有限的知识内,这当然是不妥的, 于是在之后还是碰到了这个bug, 获取的**max_bucket + 1** `!=`  len( dynsym_table)
+
+那该怎么办?? 于是更新了方案
+
+
+
+假如通过 max_bucket 拿到的chain值不是一个有效的符号, 也就说
+
+```
+chani & 1 !=0 成立
+```
+
+那么我们就需要继续遍历, 往 max_bucket 之后遍历, 每遍历一次, 我们的自定义获取的 len_sym就会 ++
+
+
+
+一份局部的python代码如下
+
+```
+    while mm_GnuHashTable.chains[-1].value & 1 == 0:
+        chani = read_file_from_struct(file, mm_Elf32_Word)
+        mm_GnuHashTable.chains.append(chani.item)
+        sym_table_cnt += 1
+```
+
+完整的python 参考代码如下
+
+```python
+def parse_dynamic_GNU_HASH(
+        file: _BufferedIOBase,
+        dyn_items_organize: Dict[str, Union[Dynamic32, Dynamic64]],
+        elf_classe: str,
+) -> Tuple[GnuHashTable, Any]:
+    dict_keys = dyn_items_organize.keys()
+    if 'DT_GNU_HASH' not in dict_keys:
+        return (None, 0)
+
+    mm_gnu_hash = dyn_items_organize['DT_GNU_HASH']
+
+    file.seek(mm_gnu_hash.d_value.value)
+    mm_GnuHashTable: GnuHashTable = read_file_from_struct(file, GnuHashTable)
+    mm_GnuHashTable.blooms = []
+
+    bloom_type = mm_Elf32_Word
+
+    if elf_classe == '64':
+        bloom_type = mm_Elf64_Xword
+    for i in range(mm_GnuHashTable.bloomSize.value):
+        bloom = read_file_from_struct(file, bloom_type)
+        mm_GnuHashTable.blooms.append(bloom.item)
+
+    mm_GnuHashTable.buckets = []
+    sym_table_idx_max = 0
+    for i in range(mm_GnuHashTable.nbucket.value):
+        bucket = read_file_from_struct(file, mm_Elf32_Word)
+        mm_GnuHashTable.buckets.append(bucket.item)
+        if sym_table_idx_max < bucket.item.value:
+            sym_table_idx_max = bucket.item.value
+
+            
+    if sym_table_idx_max < mm_GnuHashTable.symndx.value:  #可以寻到的最大值都小于symdnx, 那就没意思了
+        sym_table_cnt = mm_GnuHashTable.symndx.value #数量
+    else:
+        sym_table_cnt = sym_table_idx_max + 1 #符号的数量
+
+
+    # sym_table_cnt是符号的数量,不是chains的数量
+    # sym_table_cnt = len(sym_table) = len(chains) + symndx
+
+    nchain = sym_table_cnt - mm_GnuHashTable.symndx.value
+    mm_GnuHashTable.chains = []
+    for i in range(nchain):
+        chani = read_file_from_struct(file, mm_Elf32_Word)
+        mm_GnuHashTable.chains.append(chani.item)
+        #print(chani.value & 1)
+
+    # 此刻大概是读取到末尾了,但不一定是末尾
+    # 尝试再读取
+    while mm_GnuHashTable.chains[-1].value & 1 == 0:
+        chani = read_file_from_struct(file, mm_Elf32_Word)
+        mm_GnuHashTable.chains.append(chani.item)
+        sym_table_cnt += 1
+
+    return (
+        mm_GnuHashTable,
+        sym_table_cnt
+    )
+
+```
+
+
+
