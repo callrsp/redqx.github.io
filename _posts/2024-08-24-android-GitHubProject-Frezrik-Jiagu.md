@@ -28,7 +28,7 @@ app: 原始待加载项目
 
 jiagu: dex加载器
 
-JiaguTool 是成品项目, 其它是代码相关文件
+JiaguTool : 类似于与release文件, 复制加壳的
 
 pack: 加壳器,,负责提取, 解包打包签名.....
 
@@ -551,7 +551,7 @@ org_Application.onCreate();
 
 我修改了作者项目的一些写法,为了自己更加方便调试和理解
 
-dex如何加载就不说了,,,,
+
 
 > attachBaseContext()
 
@@ -565,7 +565,7 @@ dex如何加载就不说了,,,,
 
 然后修改  classLoader.pathList(DexPathList).dexElements(Element) = new_dexElement
 
-4), 新建Object: org_application, 调用org_application.attach, 实现org_application.mbase已经org_application.mLoadApk的修改
+4), 新建Object: org_application, 调用org_application.attach, 实现org_application.mbase和org_application.mLoadApk的修改
 
 > OnCreate()
 
