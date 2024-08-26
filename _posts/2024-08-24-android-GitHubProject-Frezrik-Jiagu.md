@@ -11,7 +11,7 @@ categories: [android]
 
 安卓, 基于动态加载的不落地加载壳: [https://github.com/Frezrik/Jiagu](https://github.com/Frezrik/Jiagu)
 
-我自己添加了一些注释,,为了方便调试,,,做了一些更改,,,,, []()
+基于学习的目的,我分析了该项目的源码
 
 项目结构
 
@@ -28,7 +28,7 @@ app: 原始待加载项目
 
 jiagu: dex加载器
 
-JiaguTool : 类似于与release文件, 复制加壳的
+JiaguTool : 类似于与release文件, 负责加壳的
 
 pack: 加壳器,,负责提取, 解包打包签名.....
 
@@ -36,10 +36,33 @@ pack: 加壳器,,负责提取, 解包打包签名.....
 
 不落地加载壳区别于一代的落地动态加载壳,有什么区别....以下是我的一些看法...
 
-- 落地加载指的是原始的,待加载的dex或者apk会存在于某个磁盘目录中,,然后我们通过自定义的dexclassloader去加载它
-- 不落地加载,指的是我们的成品apk或者dex不会以磁盘文件的形式存在于某个目录...但是会以其它方式存在于某个内存中....
+> 动态加载壳
 
-  注意是非成品的形式存在于某个目录然后加载,,,比如我们可以加密它然后存在于某个目录,,,或者我们把它整合进loader.dex中
+一个运行的apk通过某种方式拿到xxx.dex, 此刻xxx.dex是最原始的待加载dex
+
+什么方式?
+
+- 比如读取当前classs.dex文件内容,从自身结构中提取xxx.dex内容(提前把xxx.dex塞进classs.dex), ,然后解密
+- 比如在asset目录中读取加密的dex文件,然后解密
+- ....
+
+解密后, 拿到xxx.dex, 我们把它至于某个磁盘目录下, 比如位于 /data/data/com.example.xxxxx./目录下
+
+然后使用DexClassLoader去加载xxx.dex, 这应该叫落地的动态加载壳
+
+落地体现在xxx.dex最后以原始的形式位于了/data/data/com.example.xxxxx./目录下
+
+> 不落地加载壳
+
+区别于动态加载壳, 它提取出原始的dex, 不需要把它置于 /data/data/com.example.xxxxx./目录下
+
+在在内存中把读取到的内容给classloader加载即可.
+
+不落地体现在成品的,原始的xxx.dex不需要置于某个目录,然后再去加载
+
+
+
+
 
 
 
@@ -81,7 +104,7 @@ pack: 加壳器,,负责提取, 解包打包签名.....
 
 
 
-## Android8.0以上分析
+## Android8.0以上分析: InMemoryDexClassLoader版本
 
 Android8.0及以上采用系统提供的InMemoryDexClassLoader实现内存加载dex
 
@@ -587,10 +610,349 @@ org_Application.onCreate();
 
 
 
-## Android8.0以下分析
+## Android8.0以下分析: OpenMemory版本
 
 在<<Android8.0以上分析>>分析二代基础上,,,我们接着分析
 
-未完待续....
+细节的地方不再叙述
+
+
+
+### 详细分析
+
+
+
+#### attachBaseContext()部分
+
+
+
+```java
+    @Override
+    protected void attachBaseContext(Context context)
+    {
+        super.attachBaseContext(context);
+       // System.load(AssetsUtil.copyJiagu(context));
+        attach(this);
+    }
+```
+
+首先进入attach函数
+
+```c
+extern "C"
+JNIEXPORT void JNICALL
+Java_com_example_jiagu_StubApp_attach(JNIEnv *env, jclass clazz, jobject application)
+{
+    //JNIEnv *env, jclass clazz, jobject application
+    // TODO: implement attach()
+    init(env, application);
+
+    // 从/data/app/xxx/base.apk获取dex
+    LOGD("[-]getDex");
+    //jbyteArray dexArray = getDex(env, application); //修改了dex加载的方式,从asset的i11111i111.zip读取dex
+
+    // 内存加载dex
+    LOGD("[-]loadDex");
+    loadDex(env, application);
+
+    uninit(env);
+}
+```
+
+就init函数而言,区别于Android8.0以上的InMemoryDexClassLoader版本
+
+它在init中创建了一个vm.dex, 存放于`"/data/user/0/com.example.myapplication2/.jiagu/vm.dex"`
+
+```c
+    //Android8.0以下
+    jstring dex = env->NewStringUTF(".jiagu");
+    jobject fileDir = CallObjectMethod(cur_application, "getFilesDir", "()Ljava/io/File;").l;
+    jobject dataDir = CallObjectMethod(fileDir, "getParentFile", "()Ljava/io/File;").l;
+    jobject dexDir = NewClassInstance("java/io/File", "(Ljava/io/File;Ljava/lang/String;)V",
+                                      dataDir, dex);
+
+    CallObjectMethod(dexDir, "mkdir", "()Z");
+    jstring path = static_cast<jstring>(CallObjectMethod(dexDir, "getPath",
+                                                         "()Ljava/lang/String;").l);
+    // .jiagu目录的路径
+    g_jiagu_path = env->GetStringUTFChars(path, nullptr);
+
+    env->DeleteLocalRef(dex);
+    env->DeleteLocalRef(fileDir);
+    env->DeleteLocalRef(dataDir);
+    env->DeleteLocalRef(dexDir);
+    env->DeleteLocalRef(path);
+
+    char vm_path[128];
+    sprintf(vm_path, "%s/vm.dex", g_jiagu_path);
+    write_vm_dex(vm_path);
+```
+
+
+
+vm.dex起什么作用? 
+
+- 他是一个正常完整的dex
+- 没啥功能,作为后续的跳板dex
+
+
+
+返回attach函数,进入loaddex()	
+
+区别于Android8.0以上的InMemoryDexClassLoader版本
+
+接下来它加载了libart.so
+
+//只不过原作者没考虑安卓8.0以下x86_64的情况,,,于是我手写进去了`/system/lib64/libart.so` 😅😅
+
+```c
+    art_handle = ndk_dlopen("/system/lib64/libart.so", RTLD_NOW);//目前测试的是Android7.0 x86_64
+    if (!art_handle)
+    {
+        LOGE("[-]get %s handle failed:%s", LIB_ART_PATH, dlerror());
+        return;
+    }
+```
+
+然后就是通过openmemory_load_dex去加载dex
+
+```c
+    for(int i=0; i < dex_cnt; i++)
+    {
+        jbyteArray innerArray = static_cast<jbyteArray>(env->GetObjectArrayElement(dexList, i));
+        jbyte* dex_data = env->GetByteArrayElements(innerArray, nullptr);
+        jsize innerLength = env->GetArrayLength(innerArray);
+
+        jobject mCookie = openmemory_load_dex(env, art_handle, reinterpret_cast<char *>(dex_data), innerLength);
+        if (mCookie)
+        {
+            dexobjs.push_back(mCookie);//返回vm.dex的DexFile,只不过DexFile.mCookie指向的是我们自己加载的dex,而不是原来的vm.dex
+            //如果是InMemoryDexClassLoader
+            //这里放进去的是DexPathList$Element (static class Element),而不是DexFile
+            //在make_dex_elements中,会把DexFile转换为DexPathList$Element
+        }
+    }
+```
+
+进入openmemory_load_dex()
+
+```c
+static jobject openmemory_load_dex(JNIEnv *env, void *art_handle, char *base, int dex_size)
+{
+    int zero = open("/dev/zero", PROT_WRITE);
+    void *g_decrypt_base = mmap(0, dex_size, PROT_READ | PROT_WRITE, MAP_PRIVATE, zero, 0);
+    close(zero);
+    if (g_decrypt_base == MAP_FAILED)
+    {
+        LOGE("[-]ANONYMOUS mmap failed:%s", strerror(errno));
+        exit(-1);
+    }
+    memcpy(g_decrypt_base, base, dex_size);
+
+    char dex_path[128];
+    char odex_path[128];
+    sprintf(dex_path, "%s/vm.dex", g_jiagu_path);
+    sprintf(odex_path, "%s/vm.odex", g_jiagu_path);
+    jstring dex = env->NewStringUTF(dex_path);
+    jstring odex = env->NewStringUTF(odex_path);
+    LOGD("replace %s", dex_path);
+    jobject vm_dexFile = CallStaticMethod("dalvik/system/DexFile",
+                                          "loadDex",
+                                          "(Ljava/lang/String;Ljava/lang/String;I)Ldalvik/system/DexFile;",
+                                          dex, odex, 0).l;//这里返回的是DexFile
+    //调用DexFile.loadDex返回DexFie, DexFile的构造函数也会调用这个去返回DexFile
+
+    //DexFile.loadDex(dex_path, odex_path,0)
+    jfieldID cookie_field;
+    jclass DexFileClass = env->FindClass("dalvik/system/DexFile");
+    if (g_sdk_version < 23)
+    {
+        std::unique_ptr<std::vector<const void *>> dex_files(new std::vector<const void *>());
+        dex_files.get()->push_back(load(g_sdk_version, art_handle, (char *)g_decrypt_base, (dex_size)));
+
+        cookie_field = env->GetFieldID(DexFileClass, "mCookie", "J");
+        jlong mCookie = static_cast<jlong>(reinterpret_cast<uintptr_t>(dex_files.release()));
+        env->SetLongField(vm_dexFile, cookie_field, mCookie);
+    }
+    else
+    {
+        //获取原有的vm.dex的mCookie,然后修改mCookie指向我们新加载的dex, 刚才用DexFile.LoadDex加载的
+        std::vector<std::unique_ptr<const void *>> dex_files;
+        dex_files.push_back(std::move(load23(art_handle, (char *)g_decrypt_base, (dex_size))));
+
+        cookie_field = env->GetFieldID(DexFileClass, "mCookie", "Ljava/lang/Object;");
+        jobject vmdex_mCookie = env->GetObjectField(vm_dexFile, cookie_field);
+        //DexFile.mCookie
+        jlongArray long_array = env->NewLongArray(1 + dex_files.size());//
+        jboolean is_long_data_copied;
+        jlong* mix_element = env->GetLongArrayElements(long_array, &is_long_data_copied);
+
+        mix_element[0] = NULL;
+        for (size_t i = 0; i < dex_files.size(); ++i)
+        {//传递进来的就一个dex内容,dex_files.size()=1
+            if (g_sdk_version == 23)
+            {
+                mix_element[i] = reinterpret_cast<uintptr_t>(dex_files[i].get());//23还有什么特别之处么....mix_element[0] = art::DexFile::OpenMemory(...
+            }
+            else
+            {
+                mix_element[1 + i] = reinterpret_cast<uintptr_t>(dex_files[i].get());//mix_element[0] = NULL; mix_element[1] = art::DexFile::OpenMemory(...
+            }
+        }
+
+        // 更新mCookie, vm.dex -> mCookie指向了新的地方
+        env->ReleaseLongArrayElements((jlongArray)vmdex_mCookie, mix_element, 0);//?mCookie是指向数组?而不是单个的DexFile?
+        if (env->ExceptionCheck())
+        {
+            LOGE("[-]g_sdk_int Update cookie failed");
+            return NULL;
+        }
+
+        for (auto & dex_file : dex_files)
+        {
+            dex_file.release();
+        }
+
+        env->SetObjectField(vm_dexFile, cookie_field, vmdex_mCookie);//修改mCookie
+    }
+
+    env->DeleteLocalRef(dex);
+    env->DeleteLocalRef(odex);
+
+    return vm_dexFile;//返回一个DexFile??? ,而是DexPathList$Element?
+}
+```
+
+口述以下openmemory_load_dex干了什么...
+
+通过DexFile.LoadDex加载了`"/data/user/0/com.example.myapplication2/.jiagu/vm.dex"`
+
+LoadDex返回的是DexFile的 java对象
+
+然后通过native层DexFile::OpenMemory(...),加载我们原始的dex文件, 返回一个c/c++的DexFile的类指针,
+
+然后就是一些操作,,让vm.dex的DexFile.mCookie指向我们通过OpenMemory获取的DexFile指针
+
+本来mCookie就是自己在C/C++层的DexFile指针,,,同时vm.dex的mCookie指向的是自己
+
+这下子修改后,vm.dex的mCookie指向了我们要加载的dex文件
+
+最后函数返回vm.dex的DexFile对象
+
+
+
+然后就是
+
+```
+make_dex_elements(env, classLoader, dexobjs);//把自己的dexobjs添加到已经的dexElements里面
+hook_application(cur_application, appname);
+```
+
+区别于Android8.0以上的InMemoryDexClassLoader版本
+
+OpenMemory版本 通过调用 /system/lib64/libart.so::DexFile:OpenMemory()来返回待加载dex文件的DexFile指针
+
+于是OpenMemory版本的dexobjs成员是DexFile对象, 而不是DexPathList%Element
+
+而InMemoryDexClassLoader版本则是调用java层的DexPathList.makeInMemoryDexElements(...)生成elements,
+
+然后把element放入dexobjs,用于后续调用make_dex_elements进行classloader.PathList.dexElements修改
+
+
+
+我们进入make_dex_elements函数
+
+```c
+static void make_dex_elements(JNIEnv *env, jobject classLoader, std::vector<jobject> dexFileobjs)
+{
+    jclass PathClassLoader = env->GetObjectClass(classLoader);
+    jclass BaseDexClassLoader = env->GetSuperclass(PathClassLoader);
+    // get pathList fieldid
+    jfieldID pathListid = env->GetFieldID(BaseDexClassLoader, "pathList", "Ldalvik/system/DexPathList;");
+    jobject pathList = env->GetObjectField(classLoader, pathListid);
+
+    // get DexPathList Class
+    jclass DexPathListClass = env->GetObjectClass(pathList);
+    // get dexElements fieldid
+    jfieldID dexElementsid = env->GetFieldID(DexPathListClass, "dexElements", "[Ldalvik/system/DexPathList$Element;");
+    jobjectArray dexElement = static_cast<jobjectArray>(env->GetObjectField(pathList, dexElementsid));
+
+    jint len = env->GetArrayLength(dexElement);
+
+    LOGD("[+]Elements size:%d, dex File size: %d", len, dexFileobjs.size());
+
+    // Get dexElement all values and add  add each value to the new array
+    jclass ElementClass = env->FindClass("dalvik/system/DexPathList$Element"); // dalvik/system/DexPathList$Element
+    jobjectArray new_dexElement = env->NewObjectArray(len + dexFileobjs.size(), ElementClass, NULL);
+
+    //原来的
+    for (int i = 0; i < len; i++)
+    {
+        env->SetObjectArrayElement(new_dexElement, i, env->GetObjectArrayElement(dexElement, i));
+    }
+
+    //新添加的
+    jmethodID ElementInit = env->GetMethodID(ElementClass,
+                                             "<init>",
+                                             "(Ljava/io/File;ZLjava/io/File;Ldalvik/system/DexFile;)V");
+    jboolean isDirectory = JNI_FALSE;
+    for (int i = 0; i < dexFileobjs.size(); i++)
+    {
+        //DexFile转成DexPathList$Element
+        jobject element_obj = env->NewObject(ElementClass, ElementInit, NULL, isDirectory, NULL,dexFileobjs[i]);
+        env->SetObjectArrayElement(new_dexElement, len + i, element_obj);
+    }
+
+    env->SetObjectField(pathList, dexElementsid, new_dexElement);
+
+    env->DeleteLocalRef(ElementClass);
+    env->DeleteLocalRef(dexElement);
+    env->DeleteLocalRef(DexPathListClass);
+    env->DeleteLocalRef(pathList);
+    env->DeleteLocalRef(BaseDexClassLoader);
+    env->DeleteLocalRef(PathClassLoader);
+}
+```
+
+OpenMemory版本 在进入make_dex_elements时传递进来的dexobjs是DexFile的数组, 不能用于替换classloader.pathlist.dexElements
+
+所以在make_dex_elements()中,还需要通过把DexFile转化为DexPathList$Element, 然后再替换
+
+```c
+    jmethodID ElementInit = env->GetMethodID(ElementClass,
+                                             "<init>",
+                                             "(Ljava/io/File;ZLjava/io/File;Ldalvik/system/DexFile;)V");
+    jboolean isDirectory = JNI_FALSE;
+    for (int i = 0; i < dexFileobjs.size(); i++)
+    {
+        //DexFile转成DexPathList$Element
+        jobject element_obj = env->NewObject(ElementClass, ElementInit, NULL, isDirectory, NULL,dexFileobjs[i]);
+        env->SetObjectArrayElement(new_dexElement, len + i, element_obj);
+    }
+```
+
+
+
+...
+
+之后的分析差不多就和Android8.0以上分析: InMemoryDexClassLoader版本差不多了,,,,
+
+### 小结
+
+
+
+区别于Android8.0以上分析: InMemoryDexClassLoader版本
+
+<Android8.0以下分析: OpenMemory版本> 在attach函数中调用init函数, 创建了vm.dex, 用于加载待加载dex的跳板
+
+在jiagu.cpp的openmemory_load_dex()函数中调用DexFile.LoadDex()加载vm.dex, 然后调用art::DexFile::OpenMemory加载待加载dex
+
+接着替换vm.dex的DexFile的mCookie,指向待加载的dex的DexFile
+
+之后就差不多和InMemoryDexClassLoader版本类似
+
+
+
+
 
 # 加壳器分析
