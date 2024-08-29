@@ -257,7 +257,7 @@ this.nativeLibraryPathElements = makePathElements(getAllNativeLibraryDirectories
 
 然后查看 `this.nativeLibraryPathElements` 是一个什么鬼
 
-![image-20240828160938707](./img/image-20240828160938707-1724903936803-3.png)
+![image-20240828160938707](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240828160938707-1724903936803-3.png)
 
 发现是 ` this.nativeLibraryDirectories` + ` this.systemNativeLibraryDirectories` + `VM's library` 的 `NativeLibraryPathElement` 对象
 
@@ -267,7 +267,7 @@ this.nativeLibraryPathElements包含了所有要搜索的路径
 
 然后我们抽取一个 `DexPathList$NativeLibraryPathElement` 对象查看一下
 
-![image-20240828162456693](./img/image-20240828162456693-1724903950421-5.png)
+![image-20240828162456693](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240828162456693-1724903950421-5.png)
 
 以其中一个 zip 的搜索路径为例, 
 
