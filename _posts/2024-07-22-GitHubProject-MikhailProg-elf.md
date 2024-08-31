@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Analyze the elfloader by MikhailProg"
+title:  "(MikhailProg/elf)项目分析-elf加载器"
 date:   2024-07-22 19:39:02 +0800
-categories: [Linux] 
+categories: [Github-Project]
 ---
 
 

@@ -2,7 +2,7 @@
 layout: post
 title:  "dlsym原理分析(一)"
 date:   2024-08-14 00:00:00 +0800
-categories: [android]    
+categories: [Linux]   
 ---
 
 
