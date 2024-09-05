@@ -6,9 +6,7 @@ permalink: /about/
 
 # Den9Qux1ang
 
-`"It's not that I'm so smart;`
-
-`it's just that I stay with problems longer."`
+一个被低级欲望支配的动物....
 
 **-- Albert Einstein**
 

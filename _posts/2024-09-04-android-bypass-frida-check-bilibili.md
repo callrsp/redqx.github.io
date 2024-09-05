@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "绕过bilibili frida反调试-文章复现"
+title:  "绕过bilibil1 frida反调试-文章复现"
 date:   2024-09-04 00:00:00 +0800
 categories: [android] 
 ---
@@ -22,9 +22,9 @@ pthread_create是一种编程策略(多线程轮询检测,,...), 结合一些api
 
 
 
-wp: [[原创]绕过bilibili frida反调试](https://bbs.kanxue.com/thread-277034.htm)
+wp: [[原创]绕过bilibil1 frida反调试](https://bbs.kanxue.com/thread-277034.htm)
 
-哔哩哔哩
+哔哩bili
 
 官方版本号：v7.26.1
 
@@ -36,7 +36,7 @@ apk附件: 链接: https://pan.baidu.com/s/1od3baKWjqzbyOHTdBy6zyQ?pwd=6s8d 提�
 
 
 
-尝试用frida Spawned 启动bilibili
+尝试用frida Spawned 启动bilibil1
 
 ```
 λ frida -U -f tv.danmaku.bili
@@ -58,9 +58,9 @@ Spawned `tv.danmaku.bili`. Resuming main thread!
 
 进程直接over
 
-ps: 我不太知道是哔哩哔哩进程over还是说frida进程over
+ps: 我不太知道是哔哩bili进程over还是说frida进程over
 
-具体表现为 frida注入失败, frida-server正常, 哔哩哔哩进程重启,然后进入正常页面
+具体表现为 frida注入失败, frida-server正常, 哔哩bili进程重启,然后进入正常页面
 
 检测Frida的机制一般在Native层实现，通常会创建几个线程轮询检测, 
 
@@ -491,7 +491,7 @@ call __system_property_get("ro.build.version.sdk", v1)
 
 
 
-之后可以看到哔哩哔哩可以成功运行
+之后可以看到哔哩bili可以成功运行
 
 ![image-20240904165216430](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240904165216430.png)
 
@@ -499,9 +499,9 @@ call __system_property_get("ro.build.version.sdk", v1)
 
 # v7.76.0 
 
-wp: [绕过最新版bilibili app反frida机制](https://blog.csdn.net/wei_java144/article/details/139179629)
+wp: [绕过最新版bilibil1 app反frida机制](https://blog.csdn.net/wei_java144/article/details/139179629)
 
-哔哩哔哩
+哔哩bili
 
 官方版本号：v7.76.0 
 
