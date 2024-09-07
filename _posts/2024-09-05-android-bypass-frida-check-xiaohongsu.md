@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "绕过x1aoh0ngshu frida反调试-文章复现"
+title:  "绕过 xiaohongsu frida检测 文章复现"
 date:   2024-09-05 00:00:00 +0800
 categories: [android] 
 ---
@@ -11,7 +11,7 @@ categories: [android]
 
 wp: [绕过最新版bilibil1 app反frida机制](https://blog.csdn.net/wei_java144/article/details/139179629)
 
-小h0ng书
+xiaohongsu
 
 官方版本号：[v8.31.0] 
 
@@ -21,12 +21,14 @@ apk附件: 链接: https://pan.baidu.com/s/1od3baKWjqzbyOHTdBy6zyQ?pwd=6s8d 提�
 
 ## way1 修改dlsym(xx,"pthread_create")返回值
 
+
+
 分析环境
 
 ```
 Android10
 Frida 16.3.3 
-xiaohongshu v8.31.0
+xiaohongsu v8.31.0
 ```
 
 
@@ -76,7 +78,7 @@ function hook_dlopen() {
 console.log("\nHi, I am frida!");
 hook_dlopen();
 /*
-λ frida -U -f com.xingin.xhs -l asset\f1.js
+λ frida -U -f com.qiyi.video -l asset\f1.js
      ____
     / _  |   Frida 16.3.3 - A world-class dynamic instrumentation toolkit
    | (_| |
@@ -88,38 +90,19 @@ hook_dlopen();
    . . . .   More info at https://frida.re/docs/home/
    . . . .
    . . . .   Connected to PBCM10 (id=1d518c72)
-Spawning `com.xingin.xhs`...
+Spawning `com.qiyi.video`...
 
 Hi, I am frida!
-Spawned `com.xingin.xhs`. Resuming main thread!
-[PBCM10::com.xingin.xhs ]-> load /system/framework/oat/arm64/android.test.mock.odex
-load /system/framework/oat/arm64/android.test.runner.odex
-load /system/framework/oat/arm64/org.apache.http.legacy.odex
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/oat/arm64/base.odex
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsentry-record.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libbytehook.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsentry-hook.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsentry.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsentry-fd-monitor.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsecurebase.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libc++_shared.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libmmkv.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libxylog.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libreddb.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libxyass.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libsmsdk.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libtiny.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libxyasf.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libnetdiagnose.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libxyhttpdns.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libijkffmpeg.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libijksdl.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libredlog.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libreddownload.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libredstrategycenter.so
-load /data/app/com.xingin.xhs--J0ejCpadCWO5R8dGEjf_g==/lib/arm64/libmsaoaidsec.so
+Spawned `com.qiyi.video`. Resuming main thread!
+[PBCM10::com.qiyi.video ]-> load /system/framework/oat/arm/android.test.mock.odex
+load /system/framework/oat/arm/org.apache.http.legacy.odex
+load /system/framework/oat/arm/android.test.runner.odex
+load /data/app/com.qiyi.video-lJqQFY---WMn8DLowc8W5g==/oat/arm/base.odex
+load /data/app/com.qiyi.video-lJqQFY---WMn8DLowc8W5g==/lib/arm/libmmkv.so
+load /data/app/com.qiyi.video-lJqQFY---WMn8DLowc8W5g==/lib/arm/libxcrash.so
+load /data/app/com.qiyi.video-lJqQFY---WMn8DLowc8W5g==/lib/arm/libmsaoaidsec.so
 Process terminated
-[PBCM10::com.xingin.xhs ]->
+[PBCM10::com.qiyi.video ]->
 
 Thank you for using Frida!
 */
@@ -326,7 +309,7 @@ replace dlsym("pthread_create")
 
 wp: [某书Frida检测绕过记录](https://blog.csdn.net/weixin_45582916/article/details/137973006)
 
-小h0ng书
+xiaohongsu
 
 官方版本号：[v8.31.0] 
 
@@ -399,8 +382,6 @@ void init_proc()
 sub_123F0() 内部第一次调用了`_system_property_get("ro.build.version.sdk", v1)`; 可以作为一个hook时机,
 
 通过分析,认为`sub_1BEC4`是检测函数,我们对他进行替换
-
-
 
 ```js
 function nop_sub_1BEC4() 

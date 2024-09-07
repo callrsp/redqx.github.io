@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "绕过bilibil1 frida反调试-文章复现"
+title:  "绕过 bilibil1 frida检测 文章复现"
 date:   2024-09-04 00:00:00 +0800
 categories: [android] 
 ---
@@ -20,11 +20,9 @@ pthread_create是一种编程策略(多线程轮询检测,,...), 结合一些api
 
 # v7.26.1
 
-
-
 wp: [[原创]绕过bilibil1 frida反调试](https://bbs.kanxue.com/thread-277034.htm)
 
-哔哩bili
+bilibil1
 
 官方版本号：v7.26.1
 
@@ -56,9 +54,7 @@ Spawned `tv.danmaku.bili`. Resuming main thread!
 [PBCM10::tv.danmaku.bili ]
 ```
 
-进程直接over
-
-ps: 我不太知道是哔哩bili进程over还是说frida进程over
+frida注入直接over
 
 具体表现为 frida注入失败, frida-server正常, 哔哩bili进程重启,然后进入正常页面
 
@@ -263,7 +259,7 @@ init_proc()的主要检查点在代码`v8 = sub_B1B4(v0);`之后
 
 于是我们以`_system_property_get`作为hook点,
 
-如果_system_property_get函数被调用了，那么这个时候也就是`.init_proc`函数刚刚调用的时候，在这个时机点可以注入我想要的代码
+如果_system_property_get函数被调用了，那么这个时候也就是`.init_proc`函数刚刚被调用的时候，在这个时机点可以注入我们想要的代码
 
 我们对pthread_create函数进行hook一下，打印一下新线程要执行的函数地址, 查看是不是在`libmsaoaidsec.so`中
 
@@ -354,8 +350,8 @@ pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
 pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
 pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
 pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
-pthread_create(arg0,arg1,0xb3e6a129,arg3); ret2 0xb3e6a3fd ;恶意线程
-pthread_create(arg0,arg1,0xb3e69975,arg3); ret2 0xb3e69ae9 ;恶意线程
+pthread_create(arg0,arg1,0xb3e6a129,arg3); ret2 0xb3e6a3fd ;恶意线程,在libmsaoaidsec.so中
+pthread_create(arg0,arg1,0xb3e69975,arg3); ret2 0xb3e69ae9 ;恶意线程,在libmsaoaidsec.so中
 pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
 pthread_create(arg0,arg1,0xe42f59f5,arg3); ret2 0xe42f6c37
 Process terminated
@@ -383,7 +379,7 @@ pthread_create调用地址: 00010AE4
 pthread_create返回地址: 00010AE8
 ```
 
-我们对调用地址进行nop掉,这样会显得比较暴力, nop掉后查看bilibli是否正常运行
+我们对调用地址进行nop掉,这样会显得比较暴力, nop掉后查看app是否正常运行
 
 ```js
 function hook_dlopen2(soName = '') 
@@ -491,7 +487,7 @@ call __system_property_get("ro.build.version.sdk", v1)
 
 
 
-之后可以看到哔哩bili可以成功运行
+之后可以看到bilibil1可以成功运行
 
 ![image-20240904165216430](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240904165216430.png)
 
@@ -501,7 +497,7 @@ call __system_property_get("ro.build.version.sdk", v1)
 
 wp: [绕过最新版bilibil1 app反frida机制](https://blog.csdn.net/wei_java144/article/details/139179629)
 
-哔哩bili
+bilibil1
 
 官方版本号：v7.76.0 
 
@@ -509,7 +505,7 @@ wp: [绕过最新版bilibil1 app反frida机制](https://blog.csdn.net/wei_java14
 
 apk附件: 链接: https://pan.baidu.com/s/1od3baKWjqzbyOHTdBy6zyQ?pwd=6s8d 提取码: 6s8d
 
-## way1 修改dlsym(xx,"pthread_create")返回值
+## way1 修改dlsym(xx,"pthread_create")返回地址
 
 不同于`v7.26.1`, 
 
@@ -645,8 +641,6 @@ Thank you for using Frida!
 */
 ```
 
-
-
 发现获取了2次pthread_create
 
 调用pthread_create多半是在干坏事,,所以拒绝调用...
@@ -741,6 +735,6 @@ replace dlsym("pthread_create")
 */
 ```
 
-然后bilibli就可以正常运行了
+然后bilibil1就可以正常运行了
 
 ![image-20240904150649685](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240904150649685.png)
