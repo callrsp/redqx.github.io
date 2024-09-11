@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "绕过 xiaohongsu frida检测 文章复现"
-date:   2024-09-05 00:00:00 +0800
+title:  "绕过 xiaohongsu frida检测"
+date:   2024-09-05 12:00:00 +0800
 categories: [android] 
 ---
 

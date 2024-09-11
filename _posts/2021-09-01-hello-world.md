@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "hello world"
-date:   2021-09-01 19:39:02 +0800
+date:   2021-09-01 12:00:00 +0800
 categories: [others] 
 ---
 
@@ -26,13 +26,15 @@ https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/
 
 test img show
 
-![avatar-13](./img/image-20240725-touxiang.jpg)
 
-![avatar-13](https://github.com/redqx/redqx.github.io/tree/master/_posts/img/image-20240725-touxiang.jpg)
 
-![avatar-13](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240725-touxiang.jpg)
+![avatar-13](./img/20240906_134035.jpg)
 
-![avatar-13](https://redqx.github.io/_posts/img/image-20240725-touxiang.jpg)
+
+
+![lsp](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/20240906_134035.jpg)
+
+
 
 # ssh上传
 

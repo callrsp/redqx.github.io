@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "绕过 bilibil1 frida检测 文章复现"
-date:   2024-09-04 00:00:00 +0800
+title:  "绕过 bilibil1 frida检测"
+date:   2024-09-04 12:00:00 +0800
 categories: [android] 
 ---
 
