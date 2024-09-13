@@ -2,7 +2,7 @@
 layout: post
 title:  "如何用IDA调试fork后的子进程"
 date:   2024-07-24 12:00:00 +0800
-categories: [Linux] 
+categories: [linux] 
 ---
 
 

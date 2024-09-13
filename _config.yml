@@ -18,8 +18,8 @@ collections:
 social:
     # - icon: fa-facebook
     #   link: "#"
-    # - icon: fa-twitter
-    #   link: "https://twitter.com/enovella_"
+    - icon: fa-twitter
+      link: "https://x.com/resmilere441915"
     # - icon: fa-linkedin
     #   link: "https://www.linkedin.com/in/eduardo-novella-3b808260/"
     # - icon: fa-stack-exchange
@@ -32,8 +32,6 @@ share:
   # fb_appid: 1749788565247320
 
 urls:
-    - text: my search page
-      url: https://redqx.github.io/search
     - text: About Me
       url: /about/
     - text: My Projects

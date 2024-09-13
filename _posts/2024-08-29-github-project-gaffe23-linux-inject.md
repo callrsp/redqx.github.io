@@ -2,7 +2,7 @@
 layout: post
 title:  "(gaffe23/linux-inject)项目分析-linux之SO注入"
 date:   2024-08-30 12:00:00 +0800
-categories: [Github-Project]
+categories: [github-project]
 ---
 
 

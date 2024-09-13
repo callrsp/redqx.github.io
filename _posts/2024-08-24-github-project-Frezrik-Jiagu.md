@@ -2,7 +2,7 @@
 layout: post
 title:  "(Frezrik/Jiagu)项目分析-安卓不落地加载壳"
 date:   2024-08-24 12:00:00 +0800
-categories: [Github-Project]
+categories: [github-project]
 ---
 
 

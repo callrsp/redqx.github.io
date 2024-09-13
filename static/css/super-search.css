@@ -5,7 +5,7 @@
 
 input#js-search__input {
   font-size: 12px;
-  font-family: "Roboto Condensed", Arial, sans-serif;
+  font-family: "LXGW WenKai Screen","Roboto Condensed", Arial, sans-serif;
 }
 .is-active .search__input {
   transform: translateY(0);

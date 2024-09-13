@@ -1,18 +1,39 @@
 ---
 layout: post
-title:  "hello world"
+title:  "关于本站搭建"
 date:   2021-09-01 12:00:00 +0800
 categories: [others] 
 ---
+
 
 
 # Quick Start
 
 
 
-直接下载博客模板 http://jekyllthemes.org/
 
-之后只需要在模板修改内容, git上传即可
+
+base58: https://www.metools.info/code/c74.html
+
+mp4 -> gif : https://www.freeconvert.com/zh/convert/mp4-to-gif
+
+
+
+# 本站配置
+
+博客框架 [jekyll](http://jekyllthemes.org/)
+
+采用主题： [agusmakmun](https://github.com/agusmakmun/agusmakmun.github.io) ， 通过博主**enovella_**发现的这个简洁主题
+
+其它主题推荐 [huxpro](https://github.com/Huxpro/huxpro.github.io), [chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/)
+
+直接去[jekyll](http://jekyllthemes.org/)下载博客模板 , 之后只需要在模板修改内容, git上传即可
+
+
+
+图床问题？
+
+使用 public repository +  page + raw.githubusercontent.com
 
 图片链接替换
 
