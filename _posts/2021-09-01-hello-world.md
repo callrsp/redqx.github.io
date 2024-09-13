@@ -7,11 +7,11 @@ categories: [others]
 
 
 
-# Quick Start
+>  Quick Start
 
 
 
-
+tools
 
 base58: https://www.metools.info/code/c74.html
 
@@ -45,7 +45,7 @@ https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/
 
 
 
-test img show
+test img show 图床测试
 
 
 
@@ -57,7 +57,7 @@ test img show
 
 
 
-# ssh上传
+> ssh上传
 
 为什么不用https,这个老是出现问题.
 
@@ -69,7 +69,7 @@ git remote set-url origin git@github.com:i1oveyou/i1oveyou.github.io.git
 
 
 
-# upload
+>  upload
 
 ```
 git add .
@@ -81,7 +81,9 @@ git push -u origin master
 
 
 
-# theme_config
+
+
+## 页脚的GitHub
 
 
 
@@ -89,17 +91,7 @@ git push -u origin master
 
 
 
-1), 个人头像
 
-```
-<a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="75px" width="75px" /></a>
-===>改为
-<a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="120px" width="120px" /></a>
-```
-
-
-
-2), 页脚的GitHub
 
 ```
 <div class="btn-github" style="float:right;">
@@ -119,7 +111,7 @@ git push -u origin master
 
 
 
-# toc
+## toc 文章目录配置
 
 
 
@@ -146,11 +138,27 @@ https://www.70apps.com/blog/code/2021/10/27/JEKYLL_TOC_THEME.html
 
 
 
-# avatar
+## avatar头像配置
 
 
 
-static\css\main.css
+> _layouts\default.html
+
+
+
+
+
+```
+<a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="75px" width="75px" /></a>
+===>改为
+<a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="120px" width="120px" /></a>
+```
+
+
+
+>  static\css\main.css
+
+
 
 ```
 div.col-sm-3 img.profile-avatar {
@@ -177,4 +185,40 @@ div.col-sm-3 img.profile-avatar {
 ```
 
 
+
+## 字体
+
+
+
+在 `_layouts\default.html`
+
+```
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/favicon.ico"/>
+    <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-screen-webfont/style.css" media="print" onload="this.media='all'"> => 添加部分
+```
+
+ps: 图床使用的是他人的cdn加速，可能会挂掉
+
+
+
+在 `static\css\main.css`
+
+```css
+
+body {
+  font-family: "LXGW WenKai Screen","Roboto Condensed", Arial, sans-serif;
+  background: url("/static/img/subtle_dots.png");
+  line-height: 1.5em;
+  font-weight: 300;
+  font-size: 16px;
+  color: #666;
+}
+```
 

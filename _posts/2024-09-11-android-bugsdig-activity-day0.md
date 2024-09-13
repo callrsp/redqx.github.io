@@ -15,7 +15,7 @@ categories: [app-bugs-discovery]
 
 **Activity的漏洞种类**
 
-![image-20210905185725812](./img/905443_SEK8YFRNTN3AYFB.png)
+![image-20210905185725812](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/905443_SEK8YFRNTN3AYFB.png)
 
 **Activity安全场景和危害**
 
@@ -99,7 +99,7 @@ Attempting to run shell module
 
 我们尝试启动sieve.apk的`com.mwr.example.sieve.PWList`
 
-![image-20240912160744454](./img/image-20240912160744454.png)
+![image-20240912160744454](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240912160744454.png)
 
 
 
