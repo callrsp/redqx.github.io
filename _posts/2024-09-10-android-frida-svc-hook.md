@@ -2,7 +2,7 @@
 layout: post
 title:  "frida svc hook learn"
 date:   2024-09-10 12:00:00 +0800
-categories: [android] 
+categories: [android,reverse-analysis] 
 ---
 
 
