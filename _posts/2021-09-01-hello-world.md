@@ -321,3 +321,51 @@ footer {
 
 [Register a new OAuth application](https://github.com/settings/applications/new)
 
+
+
+`_congfig.yml`
+
+```
+# Gitalk  评论功能
+gitalk: 
+  enable: true    #是否开启Gitalk评论
+  clientID: ***    #生成的clientID，下面会讲
+  clientSecret: *** #生成的clientSecret
+  repo: redqx.github.io    #仓库名称
+  owner: redqx    #github用户名
+  admin: redqx
+  distractionFreeMode: false #是否启用类似FB的阴影遮罩
+```
+
+
+
+`\_layouts\post.html`
+
+```
+{% if site.gitalk.enable %}
+<!-- Gitalk 评论 start  -->
+<style>
+    .markdown-body {
+        font-family: "LXGW WenKai Screen","Roboto Mono", "monospace", sans-serif !important;
+    }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var title = location.pathname.substr(0, 50);
+  var gitalk = new Gitalk({
+    clientID: '{{site.gitalk.clientID}}',
+    clientSecret: '{{site.gitalk.clientSecret}}',
+    repo: '{{site.gitalk.repo}}',
+    owner: '{{site.gitalk.owner}}',
+    admin: ['{{site.gitalk.admin}}'],
+    id: title,
+    distractionFreeMode: false 
+  });
+  gitalk.render('gitalk-container');
+</script>
+{% endif %}
+<!-- Gitalk end -->
+```
+

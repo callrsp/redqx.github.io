@@ -12,13 +12,15 @@ layout: default
   </span>
 {% endif %}
 
-<div>
-  <h1>Table of Contents</h1>
-  <div>{% include toc.html html=content %}</div>
-</div>
+<div id="mm_post_data">
+  <div>
+    <h1>Table of Contents</h1>
+    <div>{% include toc.html html=content %}</div>
+  </div>
 
-<div class="content">
+  <div class="content">
   <div class="post">{{ content }}</div>
+  </div>
 </div>
 
 {% assign hasSimilar = '' %}
