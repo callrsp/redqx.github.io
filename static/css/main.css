@@ -1,5 +1,5 @@
 body {
-  font-family: "LXGW WenKai Screen","Roboto Condensed", Arial, sans-serif;
+  font-family: "LXGW WenKai Screen","Roboto Mono", "Consolas", "monospace", sans-serif;
   background: url("/static/img/subtle_dots.png");
   line-height: 1.5em;
   font-weight: 300;

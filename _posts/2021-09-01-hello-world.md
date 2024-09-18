@@ -307,3 +307,17 @@ footer {
 </div>
 ```
 
+
+
+## 添加评论Gitalk
+
+参考 
+
+- [Gitalk博客评论插件](https://tyzhang.top/article/gitalk/),
+- [为你的jekyll博客添加gitalk评论插件吧！,](https://blog.csdn.net/weixin_44235031/article/details/104480371)
+- [Gitalk博客评论插件](https://tyzhang.top/article/gitalk/)
+
+
+
+[Register a new OAuth application](https://github.com/settings/applications/new)
+

@@ -59,3 +59,14 @@ compress_html:
   clippings: all
   comments: ["<!-- ", " -->"]
   endings: all
+
+
+# Gitalk  评论功能
+gitalk: 
+  enable: true    #是否开启Gitalk评论
+  clientID: Ov23liqnOuEzjh091rug    #生成的clientID，下面会讲
+  clientSecret: dc0f8f44b2d6c5b6c9dff2744e7822cd16b014e2 #生成的clientSecret
+  repo: redqx.github.io    #仓库名称
+  owner: redqx    #github用户名
+  admin: redqx
+  distractionFreeMode: false #是否启用类似FB的阴影遮罩
