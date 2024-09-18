@@ -120,7 +120,6 @@ layout: compress
           <p class="jrsc-info"><b> 
             <span>今日诗词: </span>
             <span class="jinrishici-sentence">正在加载今日诗词....</span>
-            <span class="jinrishici-detail">正在加载今日诗词....</span>
           </b></p>
 
           <div class="social">
@@ -148,10 +147,13 @@ layout: compress
       <div class="col-sm-8 col-offset-1 main-layout">
         {{ content }}
         <footer>
-<!--           <p>
-            <span>今日天气: </span>
-            <span id="weatherData">正在加载今日天气...</span>
-          </p> -->
+          <div id="weather-info">
+              <p><b> 
+                <span>今日天气: </span>
+                <span id="weatherData">正在加载今日天气...</span>
+                <span  id="weatherTags">正在加载今日天气....</span>
+              </b></p>
+          <div>
         </footer>
       </div>
       <!-- end /.col-sm-8 -->
