@@ -21,22 +21,17 @@
         {
             var singlePoemElement = document.getElementById("jinrishici-sentence");
             var multiplePoemElements = document.getElementsByClassName("jinrishici-sentence");
-
+            var dataShow = handle_response_data(response);
             if (singlePoemElement) 
             {
-                singlePoemElement.innerText = response.data.content;
+                singlePoemElement.innerText = dataShow;
             }
 
             if (multiplePoemElements.length > 0) 
             {
                 for (var i = 0; i < multiplePoemElements.length; i++) 
                 {
-                    var content = response.data.content;
-                    var author = response.data.origin.author;
-                    var dynasty = response.data.origin.dynasty;
-                    var title = response.data.origin.title
-                    var jrscStr = content + " —— " + "["+dynasty+"]"+ author + "《"+title+"》";
-                    multiplePoemElements[i].innerText = jrscStr;
+                    multiplePoemElements[i].innerText = dataShow;
                 }
             }
         });
@@ -49,10 +44,11 @@
         var author = response.data.origin.author;
         var dynasty = response.data.origin.dynasty;
         var title = response.data.origin.title
-        var jrscStr = content + " \n—— " + "["+dynasty+"]"+ author + "《"+title+"》";
+        var jrscStr = content + "\n —— " + "["+dynasty+"]"+ author + "《"+title+"》";
       }
-      catch{
-        return " ^_^";
+      catch
+      {
+        return " wrong: ^_^";
       }
 
       return jrscStr;
