@@ -10,8 +10,14 @@ fetch('https://v2.jinrishici.com/info')
           const mm_tags = data.data.tags;
           console.log(weatherData2);
           console.log(mm_tags);
-          document.getElementById('weatherData').innerText = weatherData2;
-          document.getElementById('weatherTags').innerText = mm_tags;
+          if(document.getElementById('weatherData'))
+          {
+            document.getElementById('weatherData').innerText = weatherData2;
+          }
+          if(document.getElementById('weatherTags')){
+            document.getElementById('weatherTags').innerText = mm_tags;
+          }
+          
       } 
       catch(error) 
       {
