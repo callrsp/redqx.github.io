@@ -49,7 +49,7 @@
         var author = response.data.origin.author;
         var dynasty = response.data.origin.dynasty;
         var title = response.data.origin.title
-        var jrscStr = content + " —— " + "["+dynasty+"]"+ author + "《"+title+"》";
+        var jrscStr = content + " \n—— " + "["+dynasty+"]"+ author + "《"+title+"》";
       }
       catch{
         return " ^_^";

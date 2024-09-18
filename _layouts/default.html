@@ -117,20 +117,11 @@ layout: compress
         <div class="fixed-condition">
           <a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="90px" width="120px" /></a>
           <h1 class="author-name">&copy; {{ site.author }}</h1>
-<!--           <div id="weather-info">
-              <p>
-                <span>今日天气: </span>
-                <span id="weatherData">正在加载今日天气...</span>
-              </p>
-              <p> 
-                <span>weather Tags: </span>
-                <span  id="weatherTags">正在加载今日天气....</span>
-              </p>
-          <div> -->
           <p class="jrsc-info"><b> 
-            <span>今日诗词: </span>
-            <span class="jinrishici-sentence">正在加载今日诗词....</span>
+            <p>今日诗词: </p>
+            <p class="jinrishici-sentence">正在加载今日诗词....</p>
           </b></p>
+
           <div class="social">
             <ul>
               {% for link in site.social %}
@@ -156,10 +147,6 @@ layout: compress
       <div class="col-sm-8 col-offset-1 main-layout">
         {{ content }}
         <footer>
-          <p id="jrsc-info"><b> 
-            <span>今日诗词: </span>
-            <span class="jinrishici-sentence">正在加载今日诗词....</span>
-          </b></p>
 <!--           <p>
             <span>今日天气: </span>
             <span id="weatherData">正在加载今日天气...</span>
