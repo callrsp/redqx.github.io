@@ -14,7 +14,7 @@ function onbtnDecrypto()
     }
     if(keyword===document.getElementById("weatherData").innerHTML)
     {
-        document.getElementById("output").innerHTML = document.getElementById("mm_post_data").innerHTML;
+        document.getElementById("output").innerHTML = encryptedData;
         document.getElementById("pwinput").style.display = "none";
         alert("密码正确");
         return;
