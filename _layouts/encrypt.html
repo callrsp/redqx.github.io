@@ -3,10 +3,10 @@ layout: post
 ---
 
 <script>
-document.getElementById("mm_post_data").style.display = "none";
+//document.getElementById("content").style.display = "none";
 function onbtnDecrypto() 
 {
-    var encryptedData = "{{ mm_post_data }}";
+    var encryptedData = "{{ content }}";
     var keyword = document.getElementById("inputkey").value;
 
     if (keyword.replace(/(^\s*)|(\s*$)/g, "") == '') {

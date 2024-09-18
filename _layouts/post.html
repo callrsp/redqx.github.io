@@ -12,14 +12,13 @@ layout: default
   </span>
 {% endif %}
 
-<div id="mm_post_data">
-  <div>
-    <h1>Table of Contents</h1>
+<div id="post-info">
+  <div id=post-toc>
+    <h1>TOC</h1>
     <div>{% include toc.html html=content %}</div>
   </div>
-
   <div class="content">
-  <div class="post">{{ content }}</div>
+    <div class="post">{{ content }}</div>
   </div>
 </div>
 
