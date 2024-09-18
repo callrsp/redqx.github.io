@@ -304,3 +304,14 @@ body {
           <div>
 ```
 
+
+
+## 去掉share功能
+
+```
+<div class="content">
+  <div class="post">{{ content }}</div>
+  <!-- {% include share-page.html %} -->注释
+</div>
+```
+
