@@ -2,7 +2,14 @@ title: Knowledge Sharing
 description: A Simple Blog by redqx
 author: Den9Qux1ang
 github: https://github.com/redqx
+theme_github: https://github.com/agusmakmun/agusmakmun.github.io
+jekylltheme_site: http://jekyllthemes.org/themes/stack-problems/
 about:  "你的对手是 神圣兽国 游尾郡窝窝乡 独行族妖侠 蛮吉"
+
+url: "https://redqx.github.io"
+baseurl: "/"
+
+
 disqus_shortname: stackproblems
 google_analytics: UA-XXXXXXXX-Y
 avatar_url: /static/img/avatar.jpg
@@ -39,8 +46,7 @@ urls:
     - text: XML Feed
       url: /feed.xml
 
-url: "https://redqx.github.io"
-baseurl: "https://redqx.github.io"
+
 paginate: 20
 per_page: 20
 paginate_path: "/page/:num/"

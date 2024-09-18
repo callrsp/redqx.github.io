@@ -116,12 +116,17 @@ layout: compress
       <div class="col-sm-3">
         <div class="fixed-condition">
           <a href="/"><img class="profile-avatar" src="{{ site.avatar_url }}" height="90px" width="120px" /></a>
-          <h1 class="author-name">{{ site.author }}</h1>
-          {% if site.about %}
-            <div class="profile-about">
-              {{ site.about }}
-            </div>
-          {% endif %}
+          <h1 class="author-name">&copy; {{ site.author }}</h1>
+          <div id="weather-info">
+              <p><b> 
+                <span>今日天气: </span>
+                <span id="weatherData">正在加载今日天气...</span>
+              </b></p>
+              <p><b> 
+                <span>weather Tags: </span>
+                <span  id="weatherTags">正在加载今日天气....</span>
+              </b></p>
+          <div>
           <div class="social">
             <ul>
               {% for link in site.social %}
@@ -147,13 +152,13 @@ layout: compress
       <div class="col-sm-8 col-offset-1 main-layout">
         {{ content }}
         <footer>
-          &copy; {{ site.author }}
-          {% if site.github %}
-            - <a href="{{ site.github }}">{{ site.github }}</a>
-          {% endif %}
-          <div class="btn-github" style="float:right;">
-            <iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-            <iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+          <p id="jrsc-info"><b> 
+            <span>今日诗词: </span>
+            <span class="jinrishici-sentence">正在加载今日诗词....</span>
+          </b></p>
+          <div style="float:right;">
+            <a href="{{ site.jekylltheme_site }}">{{ Jekylltheme: 'Stack Problems' }}</a>
+            <a href="{{ site.theme_github }}">{{ github_theme_source }}</a>
           </div>
         </footer>
       </div>
@@ -169,5 +174,7 @@ layout: compress
     <script src="/static/js/super-search.js"></script>
     <script src="/static/js/thickbox-compressed.js"></script>
     <script src="/static/js/projects.js"></script>
+    <script src="{{ site.baseurl }}/static/js/jrsc-weather.js" charset="utf-8"></script>
+    <script src="{{ site.baseurl }}/static/js/jrsc-poetry.js" charset="utf-8"></script>
   </body>
 </html>

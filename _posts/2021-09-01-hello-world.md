@@ -109,6 +109,10 @@ git push -u origin master
 
 
 
+删除github的那个显示
+
+![image-20240918204950013](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240918204950013.png)
+
 
 
 
@@ -222,5 +226,81 @@ body {
   font-size: 16px;
   color: #666;
 }
+```
+
+
+
+## 去掉评论
+
+`_layouts\post.html`
+
+注释最后的代码
+
+```
+<!-- <div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "{{ site.disqus_shortname }}";
+    var disqus_identifier = "{{ site.url }}_{{ page.title }}";
+    var disqus_title = "{{ page.title }}";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
+</div> -->
+
+```
+
+
+
+## footer添加今日诗词
+
+```
+        <footer>
+          <p class="jinrishici-sentence">今日诗词正在加载...</p>
+          <div style="float:right;">
+            <a href="{{ site.jekylltheme_site }}">{{ Jekylltheme: 'Stack Problems' }}</a>
+            <a href="{{ site.theme_github }}">{{ github_theme_source }}</a>
+          </div>
+        </footer>
+        
+        <script src="{{ site.baseurl }}/static/js/jrsc-poetry.js" charset="utf-8"></script>
+```
+
+
+
+
+
+## site.about修改为天气
+
+```
+          <h1 class="author-name">{{ site.author }}</h1>
+          {% if site.about %}
+            <div class="profile-about">
+              {{ site.about }}
+            </div>
+          {% endif %}
+```
+
+修改为
+
+```
+          <h1 class="author-name">&copy; {{ site.author }}</h1>
+          <div id="weather-info">
+              <p><b> 
+                <span>今日天气: </span>
+                <span id="weatherData">正在加载今日天气...</span>
+              </b></p>
+              <p><b> 
+                <span>weather Tags: </span>
+                <span  id="weatherTags">正在加载今日天气....</span>
+              </b></p>
+          <div>
 ```
 
