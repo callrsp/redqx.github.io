@@ -3,9 +3,10 @@ layout: post
 ---
 
 <script>
+document.getElementById("mm_post_data").style.display = "none";
 function onbtnDecrypto() 
 {
-    var encryptedData = "{{ content  | strip_html | strip_newlines }}";
+    var encryptedData = "{{ mm_post_data }}";
     var keyword = document.getElementById("inputkey").value;
 
     if (keyword.replace(/(^\s*)|(\s*$)/g, "") == '') {
@@ -14,14 +15,13 @@ function onbtnDecrypto()
     }
     if(keyword===document.getElementById("weatherData").innerHTML)
     {
-        document.getElementById("output").innerHTML = encryptedData;
+        document.getElementById("output").textContent  = encryptedData;
         document.getElementById("pwinput").style.display = "none";
         alert("密码正确");
         return;
     }
     else
     {
-        document.getElementById("output").innerHTML = "解密失败！密文或者key错误!";
         alert("密码错误");
         return;
     }
@@ -32,3 +32,4 @@ function onbtnDecrypto()
    <input id="inputkey" type="password" /> <button onclick="onbtnDecrypto()">解密</button>
 </div>
 <div id="output"></div><br/>
+    
