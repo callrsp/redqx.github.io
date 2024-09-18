@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Android: Activity漏洞挖掘学习-序言－Day1"
-date:   2024-09-11 12:00:00 +0800
 categories: [bugs-dig,android] 
 ---
 

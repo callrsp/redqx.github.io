@@ -19,13 +19,22 @@ mp4 -> gif : https://www.freeconvert.com/zh/convert/mp4-to-gif
 
 
 
+
+
+自己配置的其它开源项目
+
+- [gitalk](https://github.com/gitalk/gitalk) 
+- 
+
 # 本站配置
 
 
 
 博客框架 [jekyll](http://jekyllthemes.org/)
 
-采用主题： [agusmakmun](https://github.com/agusmakmun/agusmakmun.github.io) ， 通过博主**enovella_**发现的这个简洁主题
+采用主题： [agusmakmun](https://github.com/agusmakmun/agusmakmun.github.io) ， 或者叫[stack-problems](http://jekyllthemes.org/themes/stack-problems/)
+
+通过博主**enovella_**发现的这个简洁主题
 
 其它主题推荐 [huxpro](https://github.com/Huxpro/huxpro.github.io), [chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/)
 
@@ -78,40 +87,6 @@ git add .
 git commit -m "happy every day"
 git push -u origin master
 ```
-
-
-
-
-
-
-
-## 页脚的GitHub
-
-
-
-> _layouts\default.html
-
-
-
-
-
-```
-<div class="btn-github" style="float:right;">
-<iframe src="https://ghbtns.com/github-btn.html?user=enovella&repo=enovella.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-<iframe src="https://ghbtns.com/github-btn.html?user=enovella&repo=enovella.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-
-===>改为   
-<div class="btn-github" style="float:right;">
-<iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-<iframe src="https://ghbtns.com/github-btn.html?user=i1oveyou&repo=i1oveyou.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
-</div>
-```
-
-
-
-删除github的那个显示
-
-![image-20240918204950013](https://raw.githubusercontent.com/redqx/redqx.github.io/master/_posts/img/image-20240918204950013.png)
 
 
 
@@ -259,25 +234,48 @@ body {
 
 
 
-## footer添加今日诗词
+## footer添加天气	
+
+`_layouts\default.html`
 
 ```
         <footer>
-          <p class="jinrishici-sentence">今日诗词正在加载...</p>
-          <div style="float:right;">
-            <a href="{{ site.jekylltheme_site }}">{{ Jekylltheme: 'Stack Problems' }}</a>
-            <a href="{{ site.theme_github }}">{{ github_theme_source }}</a>
-          </div>
+          <div id="weather-info">
+              <p><b> 
+                <span>今日天气: </span>
+                <span id="weatherData">正在加载今日天气...</span>
+                <span  id="weatherTags">正在加载今日天气....</span>
+              </b></p>
+          <div>
         </footer>
-        
-        <script src="{{ site.baseurl }}/static/js/jrsc-poetry.js" charset="utf-8"></script>
+```
+
+
+
+修改字体16px `static\css\main.css`
+
+```
+footer {
+  border-top: 1px solid #F7F1F1;
+  width: 100%;
+  height: 10px;
+  margin-top: 10px;
+  margin-bottom: 3em;
+  padding-top: 10px;
+  color: #C2C2C2;
+  font-size: 16px;
+  bottom: 0;
+  padding-bottom: 10px;
+}
 ```
 
 
 
 
 
-## site.about修改为天气
+## site.about修改诗词
+
+`_layouts\default.html`
 
 ```
           <h1 class="author-name">{{ site.author }}</h1>
@@ -292,16 +290,10 @@ body {
 
 ```
           <h1 class="author-name">&copy; {{ site.author }}</h1>
-          <div id="weather-info">
-              <p><b> 
-                <span>今日天气: </span>
-                <span id="weatherData">正在加载今日天气...</span>
-              </b></p>
-              <p><b> 
-                <span>weather Tags: </span>
-                <span  id="weatherTags">正在加载今日天气....</span>
-              </b></p>
-          <div>
+          <p class="jrsc-info"><b> 
+            <span>今日诗词: </span>
+            <span class="jinrishici-sentence">正在加载今日诗词....</span>
+          </b></p>
 ```
 
 

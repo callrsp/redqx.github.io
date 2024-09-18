@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "(MikhailProg/elf)项目分析-elf加载器"
-date:   2024-07-22 12:00:00 +0800
 categories: [github-project]
 ---
 

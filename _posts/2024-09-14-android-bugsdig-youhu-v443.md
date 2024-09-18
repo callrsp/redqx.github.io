@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "优酷 Android 4.43客户端升级漏洞---复现"
-date:   2024-09-14 12:00:00 +0800
 categories: [bugs-dig,android] 
 ---
 

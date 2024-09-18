@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "绕过 aiqiy1 frida检测"
-date:   2024-09-05 12:00:00 +0800
 categories: [android] 
 ---
 
