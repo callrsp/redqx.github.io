@@ -13,14 +13,12 @@ layout: default
 {% endif %}
 
 
-<p>Hidden: {{ post.hiddenn }}</p>
-<p>Hidden2: {{ page.hiddenn }}</p>
-{% if post.hiddenn == true %}
+{% if page.hiddenn == true %}
   <h3>当前文章涉密,无法查看 ^_^ </h3>
   <img src="https://raw.githubusercontent.com/i1oveyou/i1oveyou.github.io/master/assets/img/error.gif" alt="^_^">
 {% endif %}
 
-{% if post.hiddenn != true %}
+{% if page.hiddenn != true %}
   <div id="post-info">
     <div id=post-toc>
       <h1>TOC</h1>
