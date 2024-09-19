@@ -12,6 +12,7 @@ layout: default
   </span>
 {% endif %}
 
+{% if not post.hidden %}
 <div id="post-info">
   <div id=post-toc>
     <h1>TOC</h1>
@@ -21,6 +22,7 @@ layout: default
     <div class="post">{{ content }}</div>
   </div>
 </div>
+{% endif %}
 
 {% assign hasSimilar = '' %}
   {% for post in site.posts  %}

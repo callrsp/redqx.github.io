@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "关于本站搭建"
-date:   2021-09-01 12:00:00 +0800
 categories: [others] 
 ---
 
@@ -192,9 +191,8 @@ ps: 图床使用的是他人的cdn加速，可能会挂掉
 在 `static\css\main.css`
 
 ```css
-
 body {
-  font-family: "LXGW WenKai Screen","Roboto Condensed", Arial, sans-serif;
+  font-family: "LXGW WenKai Screen","Roboto Condensed", Arial, sans-serif !important;
   background: url("/static/img/subtle_dots.png");
   line-height: 1.5em;
   font-weight: 300;
